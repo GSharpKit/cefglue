@@ -24,32 +24,32 @@
 
             _goBackButton = CreateButton("Back", Stock.GoBack, OnGoBack);
             hbox.Add(_goBackButton);
-            ((Box.BoxChild)hbox[_goBackButton]).Expand = false;
+            //((Box.BoxChild)hbox[_goBackButton]).Expand = false;
 
             _goForwardButton = CreateButton("Forward", Stock.GoForward, OnGoForward);
             hbox.Add(_goForwardButton);
-            ((Box.BoxChild)hbox[_goForwardButton]).Expand = false;
+            //((Box.BoxChild)hbox[_goForwardButton]).Expand = false;
 
             _stopButton = CreateButton("Stop", Stock.Stop, OnStop);
             hbox.Add(_stopButton);
-            ((Box.BoxChild)hbox[_stopButton]).Expand = false;
+            //((Box.BoxChild)hbox[_stopButton]).Expand = false;
 
             _refreshButton = CreateButton("Refresh", Stock.Refresh, OnRefresh);
             hbox.Add(_refreshButton);
-            ((Box.BoxChild)hbox[_refreshButton]).Expand = false;
+            //((Box.BoxChild)hbox[_refreshButton]).Expand = false;
 
             _homeButton = CreateButton("Home", Stock.Home, OnHome);
             hbox.Add(_homeButton);
-            ((Box.BoxChild)hbox[_homeButton]).Expand = false;
+            //((Box.BoxChild)hbox[_homeButton]).Expand = false;
 
             _addressEntry = new Entry();
             _addressEntry.CanFocus = true;
             hbox.Add(_addressEntry);
-            ((Box.BoxChild)hbox[_addressEntry]).Expand = true;
+            //((Box.BoxChild)hbox[_addressEntry]).Expand = true;
 
             _goButton = CreateButton("Go", Stock.Ok, OnGo);
             hbox.Add(_goButton);
-            ((Box.BoxChild)hbox[_goButton]).Expand = false;
+            //((Box.BoxChild)hbox[_goButton]).Expand = false;
 
             Add(hbox);
         }
@@ -63,21 +63,21 @@
             return button;
         }
 
-        protected override void OnSizeAllocated(Gdk.Rectangle allocation)
+        /*protected override void OnSizeAllocated(Gdk.Rectangle allocation)
         {
             if (this.Child != null)
             {
                 this.Child.Allocation = allocation;
             }
-        }
+        }*/
 
-        protected override void OnSizeRequested(ref Requisition requisition)
+        /*protected override void OnSizeRequested(ref Requisition requisition)
         {
             if (this.Child != null)
             {
                 requisition = this.Child.SizeRequest();
             }
-        }
+        }*/
 
         public string HomeUrl { get; set; }
 

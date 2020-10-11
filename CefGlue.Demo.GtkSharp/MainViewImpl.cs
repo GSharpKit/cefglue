@@ -13,8 +13,7 @@
 
         private readonly Notebook _tabs;
 
-        public MainViewImpl(DemoApp application, MenuItem[] menuItems)
-            : base(WindowType.Toplevel)
+        public MainViewImpl(DemoApp application, MenuItem[] menuItems) : base(WindowType.Toplevel)
         {
             _application = application;
             var menuBar = CreateMenu(menuItems);
@@ -93,14 +92,14 @@
 
             var navBox = new WebNavigationBox();
             content.Add(navBox);
-            ((Box.BoxChild)content[navBox]).Expand = false;
-            ((Box.BoxChild)content[navBox]).Fill = false;
+            //((Box.BoxChild)content[navBox]).Expand = false;
+            //((Box.BoxChild)content[navBox]).Fill = false;
             navBox.HomeUrl = _application.HomeUrl;
 
             var browserCtl = new CefWebBrowser();
             content.Add(browserCtl);
-            ((Box.BoxChild)content[browserCtl]).Expand = true;
-            ((Box.BoxChild)content[browserCtl]).Fill = true;
+            //((Box.BoxChild)content[browserCtl]).Expand = true;
+            //((Box.BoxChild)content[browserCtl]).Fill = true;
 
             var browser = browserCtl.WebBrowser;
             browser.StartUrl = url;

@@ -25,8 +25,8 @@
             _core = new WebBrowser(this, new CefBrowserSettings(), "about:blank");
             _core.Created += new EventHandler(BrowserCreated);
 
-            WidgetFlags &= ~(WidgetFlags.DoubleBuffered);
-            WidgetFlags |= WidgetFlags.NoWindow;
+            //WidgetFlags &= ~(WidgetFlags.DoubleBuffered);
+            //WidgetFlags |= WidgetFlags.NoWindow;
         }
 
         protected override bool OnDestroyEvent(Gdk.Event evnt)

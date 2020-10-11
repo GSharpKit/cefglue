@@ -18,8 +18,10 @@
 
         protected override void PlatformRunMessageLoop()
         {
-            if (CefRuntime.Platform == CefRuntimePlatform.Windows) Application.Run();
-            else CefRuntime.RunMessageLoop();
+            if (CefRuntime.Platform == CefRuntimePlatform.Windows)
+                Application.Run();
+            else
+                CefRuntime.RunMessageLoop();
         }
 
         protected override void PlatformQuitMessageLoop()
