@@ -1,4 +1,6 @@
-﻿namespace Xilium.CefGlue.Demo
+﻿using Gdk;
+
+namespace Xilium.CefGlue.Demo
 {
     using System;
     using System.Collections.Generic;
@@ -78,11 +80,31 @@
             switch (CefRuntime.Platform)
             {
                 case CefRuntimePlatform.Windows:
-                    var parentHandle = gdk_win32_drawable_get_handle(GdkWindow.Handle);
+                    var parentHandle = gdk_win32_drawable_get_handle(Window.Handle);
                     windowInfo.SetAsChild(parentHandle, new CefRectangle(0, 0, 0, 0)); // TODO: set correct  x, y, width, height  to do not waiting OnSizeAllocated event
                     break;
 
                 case CefRuntimePlatform.Linux:
+                    UseDefaultX11VisualForGtk(Window.Handle);
+
+                    /*var screen = Gdk.Screen.Default;
+                    var svisual = screen.SystemVisual;
+
+                    var sintptr = gdk_x11_visual_get_xvisual(svisual.Handle);
+
+                    var visuals = screen.ListVisuals();
+                    //int xid = gdk_x11_screen_get_screen_number(screen.Handle);
+                    foreach (var visual in visuals)
+                    {
+                        var intptr = gdk_x11_visual_get_xvisual(visual.Handle);
+                        if (intptr == sintptr)
+                        {
+                            Visual = visual;
+                            break;
+                        }
+                    }*/
+                    //var xparentHandle = gdk_x11_window_get_xid(Handle);
+
                     Console.WriteLine("REALIZED - RAW = {0}, HANDLE = {1}", Raw, Handle);
                     windowInfo.SetAsChild(Handle, new CefRectangle(0, 0, 0, 0));
                     break;
@@ -163,6 +185,18 @@
 
         [DllImport("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr gdk_win32_drawable_get_handle(IntPtr raw);
+
+        [DllImport("libgdk-3.so.0", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr gdk_x11_window_get_xid(IntPtr raw);
+
+        [DllImport("libgdk-3.so.0", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr gdk_x11_visual_get_xvisual (IntPtr raw);
+
+        [DllImport("libgdk-3.so.0", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int gdk_x11_screen_get_screen_number (IntPtr raw);
+
+        [DllImport("glue.so", CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void UseDefaultX11VisualForGtk (IntPtr raw);
 
         private static void ResizeWindow(IntPtr handle, int x, int y, int width, int height)
         {

@@ -1,4 +1,6 @@
-﻿namespace Xilium.CefGlue.Demo
+﻿using System.Runtime.InteropServices;
+
+namespace Xilium.CefGlue.Demo
 {
     using System;
     using System.Collections.Generic;

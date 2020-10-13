@@ -26,6 +26,16 @@
 
                 commandLine.AppendSwitch("resources-dir-path", path);
                 commandLine.AppendSwitch("locales-dir-path", Path.Combine(path, "locales"));
+
+                commandLine.AppendSwitch("disable-gpu");
+                commandLine.AppendSwitch("disable-gpu-sandbox");
+                commandLine.AppendSwitch("disable-gpu-compositing");
+                commandLine.AppendSwitch("enable-begin-frame-scheduling");
+                commandLine.AppendSwitch("disable-smooth-scrolling");
+                commandLine.AppendSwitch("disable-surfaces");
+                commandLine.AppendSwitch("mute-audio");
+                commandLine.AppendSwitch("use-views");
+                commandLine.AppendSwitch("no-zygote");
             }
         }
 

@@ -29,3 +29,5 @@
 
 # IDE: Xamarin Studio (MonoDevelop)
 *.userprefs
+
+glue.so
